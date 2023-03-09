@@ -1,0 +1,30 @@
+<%- include("header") -%>
+
+<div class="box" id="heading">
+  <!-- Accessing the parameters pass along the render order. -->
+  <h1><%= listTitle %></h1>
+</div>
+
+<div class="box">
+  <!-- Looping through the collection received -->
+  <% Array.from(newListItems).forEach( function(item) { %>
+  <form action="/delete" method="post">
+    <div class="item">
+      <!-- NB: Sending back the list tile through delete route, with post method -->
+      <input type="hidden" name="list" value="<%=listTitle %>" />
+      <!-- Form input sending checking the checkbox event initiated item id -->
+      <input value="<%= item._id %>" name="checker" onchange="this.form.submit()" type="checkbox" />
+      <!--  rendering the iterated item -->
+      <p><%= item.name %></p>
+    </div>
+  </form>
+
+  <% }); %>
+  <!-- Submission part of form, where new elements are added to the database. The sent string is converted to schema before adding to our db in the app.js module -->
+  <form class="item" action="/" method="post">
+    <input type="text" name="newItem" placeholder="New Item" autocomplete="off" />
+    <button type="submit" name="list" value="<%=listTitle %>">+</button>
+  </form>
+</div>
+
+<%- include("footer") -%>
