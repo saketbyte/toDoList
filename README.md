@@ -6,6 +6,11 @@ For backend the app uses MongoDB Atlas service.
 
 ToDoList is hosted [here](https://todolist-ow1e.onrender.com/). 
 
+# functionalities implemented:
+- New item addition
+- Checkmark and removes the specific item.
+- Create a new to do list by just adding the name of your list in the URL.
+- Dynamic routing.
 
 ## Installation:
 - Download the zip
